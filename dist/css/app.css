@@ -1,0 +1,17 @@
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css);/* Custom spinner style*/
+.glyphicon.spinning.glyphicon-refresh {
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1) rotate(360deg); }
+}
+
+/* set table header min width*/
+table > thead > tr > th {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/*# sourceMappingURL=app.css.map*/
