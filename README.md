@@ -15,3 +15,21 @@
 * AngularJS 1.5.0 with ES6
 * Bootstrap
 * Webpack, Karma, Jasmine
+
+# How to run
+* Clone this project
+```
+git clone https://github.com/S1ngS1ng/angular1-table-task
+```
+
+* Intall Dependencies
+```
+npm install
+```
+
+* Start the server
+```
+npm run server
+```
+
+* Now it should be ready on: `http://localhost:8080`
