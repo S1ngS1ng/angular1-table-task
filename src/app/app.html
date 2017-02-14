@@ -1,0 +1,40 @@
+<main>
+    <h1 class="title">Hello from S1ngS1ng</h1>
+</main>
+<div class="container-fluid">
+    <!-- Show spinner when data is loading -->
+    <button class="btn btn-lg btn-warning" ng-if="!app.tableData.resolved">
+        <span class="glyphicon glyphicon-refresh spinning"></span> Loading...
+    </button>
+    <!-- Show error if data fails -->
+    <div class="alert alert-danger" ng-if="app.tableData.resolved && app.tableData.state === 'fail'">
+        <strong>Failed to get table data :( Please try again later</strong>
+    </div>
+
+    <!-- Show data table when data is loaded -->
+    <div class="row" id="data-table" ng-if="app.tableData.resolved && app.tableData.state !== 'fail'">
+        <div class="col-xs-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th ng-repeat="key in app.titleKeyArr"
+                        ng-click="app.sortColumn(key)">
+                        {{ key }}
+                        <i ng-class="'glyphicon glyphicon-chevron-'+ (app.titleKeyFlag[key] ? 'up' : 'down')"></i>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="data in app.tableData.data">
+                    <td>{{ data.userId }}</td>
+                    <td>{{ data.id }}</td>
+                    <td>{{ data.title }}</td>
+                    <td>{{ data.body }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<footer>
+</footer>
