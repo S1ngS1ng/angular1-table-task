@@ -5,7 +5,6 @@ var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 /**
  * Env
@@ -49,11 +48,11 @@ module.exports = function makeWebpackConfig() {
 
             // Filename for entry points
             // Only adds hash in build mode
-            filename: isProd ? '[name].[hash].js' : '[name].bundle.js',
+            filename: isProd ? '[name].bundle.js' : '[name].[hash].js',
 
             // Filename for non-entry points
             // Only adds hash in build mode
-            chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js'
+            chunkFilename: isProd ? '[name].bundle.js' : '[name].[hash].js'
         };
 
     /**
@@ -172,7 +171,9 @@ module.exports = function makeWebpackConfig() {
             jQuery: 'jquery',
             $: 'jquery',
             jquery: 'jquery'
-        })
+        }),
+        // S1ngS1ng
+        new ExtractTextPlugin("css/app.css")
     ];
 
     // Skip rendering index.html in test mode
@@ -198,10 +199,6 @@ module.exports = function makeWebpackConfig() {
             // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
             // Only emit files when there are no errors
             new webpack.NoErrorsPlugin(),
-
-            // Reference: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
-            // Dedupe modules in the output
-            new webpack.optimize.DedupePlugin(),
 
             // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
             // Minify all javascript, switch loaders to minimizing mode

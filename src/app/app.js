@@ -18,8 +18,7 @@ class AppCtrl {
         // Define initial value
         this.tableData = {
             data: [],
-            resolved: false,
-
+            resolved: false
         }
 
         // Call the service to retrieve data
